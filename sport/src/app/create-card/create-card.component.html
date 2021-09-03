@@ -1,0 +1,70 @@
+<h3>Create Card</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Card Number</label><span class="required">*</span>
+      <input [(ngModel)]="card.cardNumber" pattern="^[0-9]+$" maxlength="12" minlength="12" type="text" class="form-control form-control-lg" id="cardNumber"
+            #cardNumber="ngModel"
+            name="cardNumber" placeholder="Card Number" required>
+    </div>
+    <div *ngIf="!cardNumber?.valid && (cardNumber?.dirty || cardNumber?.touched)" class="error">
+      <div *ngIf="cardNumber.errors?.required">
+        Card Number is required
+      </div>
+      <div *ngIf="cardNumber.errors?.minlength">
+        Card number should be 12 digits
+      </div>
+      <div *ngIf="cardNumber.errors?.pattern">
+        Only numbers are allowed
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="name">Card Name</label><span class="required">*</span>
+      <input [(ngModel)]="card.cardName" type="text" class="form-control form-control-lg" id="cardName"
+            #cardName="ngModel"
+            name="cardName" placeholder="Card Name" required>
+    </div>
+    <div *ngIf="!cardName?.valid && (cardName?.dirty || cardName?.touched)" class="error">
+      <div *ngIf="cardName.errors?.required">
+        Card Name is required
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="name">Card Expiry</label><span class="required">*</span>
+      <input [(ngModel)]="card.cardExpiry" type="date" class="form-control form-control-lg" id="cardExpiry"
+            #cardExpiry="ngModel"
+            name="cardExpiry" placeholder="Card Expiry" required>
+    </div>
+    <div *ngIf="!cardExpiry?.valid && (cardExpiry?.dirty || cardExpiry?.touched)" class="error">
+      <div *ngIf="cardExpiry.errors?.required">
+        Card Expiry Date is required
+      </div>
+    </div>
+ 
+    <div class="form-group">
+        <label for="name">Cvv</label><span class="required">*</span>
+        <input [(ngModel)]="card.cvv" type="password" class="form-control form-control-lg" id="cvv"
+              #cvv="ngModel"  pattern="^[0-9]+$" maxlength="3" minlength="3"
+              name="cvv" placeholder="Cvv" required>
+      </div>
+      <div *ngIf="!cvv?.valid && (cvv?.dirty || cvv?.touched)" class="error">
+        <div *ngIf="cvv.errors?.required">
+          CVV is required
+        </div>
+        <div *ngIf="cvv.errors?.minlength">
+          CVV should be 3 digits
+        </div>
+        <div *ngIf="cvv.errors?.pattern">
+          Only numbers are allowed
+        </div>
+      </div>
+ 
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+ 
+<div [hidden]="!submitted">
+  <h4>Success!</h4>
+</div>

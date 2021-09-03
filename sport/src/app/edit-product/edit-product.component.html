@@ -1,0 +1,48 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Product List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th (click)="sort('productName')" >ProductName</th>
+            <th (click)="sort('category')" >Category</th>
+            <th (click)="sort('description')" >Description</th>
+            <th (click)="sort('brand')" >Brand</th>
+            <th (click)="sort('color')" >Color</th>
+            <th>Product Size</th>
+            <th>Image Link</th>
+            <th (click)="sort('mrp')" >MRP</th>
+            <th (click)="sort('discount')" >Discount</th>
+            <th (click)="sort('priceAfterDiscount')" >PriceAfterDiscount</th>
+            <th (click)="sort('inStock')" >Stock</th>
+            <th (click)="sort('estimatedDelivery')" >EstimatedDelivery</th>
+            <th>Update/Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products | async | orderBy : key: reverse">
+            <td>{{product.productName}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.brand}}</td>
+            <td>{{product.color}}</td>
+            <td>{{product.productSize}}</td>
+            <td>
+              <img height="100px" src="{{product.productImage}}" alt="{{product.productImage}}">
+          </td>
+            <td>{{product.mrp}}</td>
+            <td>{{product.discount}}</td>
+            <td>{{product.priceAfterDiscount}}</td>
+            <td>{{product.inStock}}</td>
+            <td>{{product.estimatedDelivery}}</td>
+            <td>
+              <div class="btn-group"><button (click)="deleteProduct(product.productId)" class="btn btn-danger">Delete</button>
+                <button (click)="updateProduct(product.productId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+              </div> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

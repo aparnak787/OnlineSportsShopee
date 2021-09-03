@@ -1,0 +1,16 @@
+<h2>Order Details</h2>
+ 
+<hr/>
+<div *ngIf="order">
+    <div>
+        <label><b>Amount: </b></label> {{order.amount}}
+    </div>
+    <div>
+        <label><b>Billing Date: </b></label> {{order.billingDate}}
+    </div>
+    <div>
+        <label><b>Payment Method: </b></label> {{order.paymentMethod}}
+    </div>
+<br>
+<br>
+<button (click) = "list()" class="btn btn-primary">Back</button><br>

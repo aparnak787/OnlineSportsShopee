@@ -1,0 +1,22 @@
+.info-widget {
+    width: 50%;
+    border: 1px solid black;
+    display: inline-block;
+  }
+
+  .middle {
+    float: left;
+    width: 90%;
+    overflow: auto;
+    white-space: nowrap;
+  }
+
+  .paragraph {
+    font-family: cursive;
+  }
+
+  .heading{
+      font-family : Comic Sans MS;
+  }
+
+  

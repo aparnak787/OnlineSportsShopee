@@ -1,0 +1,72 @@
+<div>
+    <h3>User Registration</h3>
+  
+<div [hidden]="submitted" style="width: 400px;">
+  <form  (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email Id</label>
+      <input type="email" class="form-control" id="emailId" required  [pattern]="emailPattern"  #emailId="ngModel" [(ngModel)]="user.emailId" name="emailId">
+      <div *ngIf="!emailId?.valid && (emailId?.dirty || emailId?.touched)" class="error">
+        <div *ngIf="emailId.errors"> 
+          <div *ngIf="emailId.errors.required"> 
+              Official Email required.
+          </div>			   
+          <div *ngIf="emailId.errors.pattern"> 
+              Official Email not valid.
+          </div>	
+       </div> 
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label for="userName">User Name</label>
+      <input type="text" class="form-control" id="userName" #userName="ngModel" required [(ngModel)]="user.userName" name="userName">
+    </div>
+    <div *ngIf="!userName?.valid && (userName?.dirty || userName?.touched)" class="error">
+      <div *ngIf="userName.errors?.required">
+        userName is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password</label>
+      <input type="password" class="form-control" id="password" #password="ngModel" required [(ngModel)]="user.password" name="password">
+    </div>
+    <div *ngIf="!password?.valid && (password?.dirty || password?.touched)" class="error">
+      <div *ngIf="password.errors?.required">
+        Password is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" class="form-control" id="address" required #address="ngModel" maxlength="50" [(ngModel)]="user.address" name="address">
+    </div>
+    <div *ngIf="!address?.valid && (address?.dirty || address?.touched)" class="error">
+      <div *ngIf="address.errors?.required">
+        Address is required
+      </div>
+    </div>
+
+ 
+
+    <div class="form-group">
+      <label for="phoneNo">Phone No.</label>
+      <input type="text" pattern="^[0-9]+$" maxlength="10" minlength="10" class="form-control" id="phoneNo" required #phoneNo="ngModel" [(ngModel)]="user.phoneNo" name="phoneNo">
+    </div>
+    <div *ngIf="!phoneNo?.valid && (phoneNo?.dirty || phoneNo?.touched)" class="error">
+      <div *ngIf="phoneNo.errors?.required">
+        Phonr Number is required
+      </div>
+      <div *ngIf="phoneNo.errors?.minlength">
+        Phone number should be 10 digits
+      </div>
+      <div *ngIf="phoneNo.errors?.pattern">
+        Only numbers are allowed
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+<div [hidden]="!submitted">
+  <h4>Success!</h4>
+</div>
+</div>

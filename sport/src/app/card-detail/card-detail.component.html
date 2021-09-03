@@ -1,0 +1,21 @@
+<h2>Card Details</h2> 
+ 
+<hr/>
+<div *ngIf="card">
+  <div>
+    <label><b>Card Number: </b></label> {{card.cardNumber}}
+  </div>
+  <div>
+    <label><b>Card Name: </b></label> {{card.cardName}}
+  </div>
+  <div>
+    <label><b>Card Expiry: </b></label> {{card.cardExpiry}}
+  </div>  
+  <div>
+    <label><b>CVV: </b></label> {{card.cvv}}
+  </div>  
+</div>
+ 
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Card List</button><br>

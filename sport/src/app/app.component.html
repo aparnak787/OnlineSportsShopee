@@ -1,0 +1,36 @@
+<mat-toolbar style="background-color: rgb(235, 217, 217);" class="mat-elevation-z5">
+    <h6 style="font-size: small">sportaro@gmail.com / 99999 66666</h6>
+    <p><span style="margin-left: 10em; font-size: x-large;">Online Sports Shopping - SPORTARO</span></p>
+    <span class="example-spacer"></span>
+    <button mat-icon-button  (click)="logout()" style="margin-left: 25em;" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>account_circle</mat-icon>Logout
+    </button>
+    <button style="margin-left: 3em;" mat-icon-button  (click)="cart()" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>shopping_cart</mat-icon>
+    </button> 
+</mat-toolbar>   
+  
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened style="background-color: rgb(235, 217, 217); top: 64px" >
+    <mat-nav-list style="width: 150px; top: 64px">
+    <a mat-list-item style="height: 60px;" routerLink="home" routerLinkActive="active"><mat-icon>home</mat-icon>Home</a>
+      <a mat-list-item style="height: 60px;" routerLink="viewProduct" routerLinkActive="active"><mat-icon>border_all</mat-icon>Products</a>
+      <a mat-list-item style="height: 60px;" routerLink = "cricket"><mat-icon>scatter_plot</mat-icon>Cricket</a>
+      <a mat-list-item style="height: 60px;" routerLink = "volleyball" ><mat-icon>golf_course</mat-icon>VolleyBall</a> 
+      <a mat-list-item style="height: 60px;" routerLink = "football" ><mat-icon>bubble_chart</mat-icon>FootBall</a>
+      <a mat-list-item style="height: 60px;" routerLink = "hockey" ><mat-icon>nature</mat-icon>Hockey</a>
+      <a mat-list-item style="height: 60px;" routerLink="paymentList" routerLinkActive="active"><mat-icon>account_balance_wallet</mat-icon>Payment Details</a>
+      <a mat-list-item style="height: 60px;" routerLink="userlist" routerLinkActive="active"><mat-icon>account_box</mat-icon>User Details</a>
+      <a mat-list-item style="height: 60px;" routerLink = "orderlist" routerLinkActive="active" ><mat-icon>format_list_bulleted</mat-icon>Order List</a>
+      <a mat-list-item style="height: 60px;" routerLink="cartList" routerLinkActive="active"><mat-icon>list</mat-icon>Cart List</a>
+      <a mat-list-item style="height: 60px;" routerLink = "cardList" routerLinkActive="active" ><mat-icon>card_giftcard</mat-icon>Card List</a>
+      <a mat-list-item style="height: 60px;" routerLink = "editProduct" routerLinkActive="active"><mat-icon>edit</mat-icon>Edit Product</a>
+      <a mat-list-item style="height: 60px;" routerLink = "addProduct" routerLinkActive="active" ><mat-icon>library_add</mat-icon>Add Product</a>
+    </mat-nav-list> 
+  </mat-sidenav>  
+  <mat-sidenav-content >
+    <p style="height: 88vh;">
+      <router-outlet></router-outlet>
+    </p>
+  </mat-sidenav-content>
+</mat-sidenav-container>

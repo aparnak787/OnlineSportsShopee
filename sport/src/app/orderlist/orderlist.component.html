@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Order List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Billing Date</th>
+            <th>Payment Method</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders | async">
+            <td>{{order.amount}}</td>
+            <td>{{order.billingDate}}</td>
+            <td>{{order.paymentMethod}}</td>
+            <td><button (click)="deleteOrder(order.orderId)" class="btn btn-danger">Delete</button>
+             <button (click)="orderDetails(order.orderId)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

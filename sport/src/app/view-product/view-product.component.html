@@ -1,0 +1,28 @@
+<mat-form-field class="example-full-width" appearance="fill" style="width : 75%">
+    <mat-label>You Can Search Product Here :).... </mat-label>
+    <input matInput type="text" [(ngModel)]="value">
+    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field>
+<span style="margin-left: 250px;"  #tooltip="matTooltip" matTooltip="Sort Product By Price" matTooltipPosition="left">
+<button  mat-icon-button  (click)="sort('mrp')">
+  <mat-icon>sort</mat-icon>
+</button>
+
+</span>
+<div class="row">
+    <div class="col-sm-6" *ngFor="let product of products | async | filter:value |  orderBy : key: reverse">
+      <div class="card" (click)="details(product.productId)" >
+        <img src="{{product.productImage}}" class="card-img-top" alt="{{product.productImage}}">
+        <div class="card-body">
+            <h2 class="card-title" style="color: Blue; margin: 0px;">{{product.productName}}</h2>
+            <h4 class="card-text" style="margin: 0px;">{{product.description}}</h4>
+             <h3 class="card-text" style="color: Green; margin: 0px;">Size : {{product.productSize}}</h3>
+            <h2 class="card-text" style="color: crimson; margin: 0px;">Price : Rs.{{product.priceAfterDiscount}}</h2>
+            <h5 class="card-text" style="color: #ffa500; margin: 0px;">{{product.mrp}} + {{product.discount}} % Discount</h5>
+            <h4 class="card-text" style="color: #6200ff; margin: 0px;">Delivery Date : {{product.estimatedDelivery}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>

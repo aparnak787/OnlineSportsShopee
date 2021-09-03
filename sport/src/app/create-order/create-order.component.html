@@ -1,0 +1,42 @@
+<h3>Create Order</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="amount">Amount</label><span class="required">*</span>
+        <input [(ngModel)]="order.amount" type="text" class="form-control form-control-lg" id="amount"
+                #amount="ngModel"  disabled="disable" 
+                name="amount" placeholder="Amount" required>
+      </div>
+      <div *ngIf="!amount?.valid && (amount?.dirty || amount?.touched)" class="error">
+        <div *ngIf="amount.errors?.required">
+          Amount is required
+        </div>
+      </div>
+ 
+      <div class="form-group">
+        <label for="billingDate">Billing Date</label><span class="required">*</span>
+        <input [(ngModel)]="order.billingDate" type="text" class="form-control form-control-lg" id="billingDate"
+        #billingDate="ngModel"  disabled="disable" 
+        name="billingDate" placeholder="Billing Date" required>
+      </div>
+      <div *ngIf="billingDate?.valid && (billingDate?.dirty || billingDate?.touched)" class="error">
+        <div *ngIf="billingDate.errors?.required">
+          Billing Date is required
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="paymentMethod">Choose Payment Method</label><span class="required">*</span>
+        <select class="form-control" id="paymentMethod" required [(ngModel)]="order.paymentMethod" name="paymentMethod">
+          <option value="Credit Card">Credit Card</option>
+          <option value="Debit Card">Debit Card</option>
+        </select>
+    </div>
+  
+    
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+<div [hidden]="!submitted">
+  <h4>Success!</h4>
+</div>

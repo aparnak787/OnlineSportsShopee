@@ -1,0 +1,21 @@
+<h3>Create Payment</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Type</label><span class="required">*</span>
+      <input [(ngModel)]="payment.type" type="text" class="form-control form-control-lg" id="type"
+                #type="ngModel" disabled="disable"
+                name="type" placeholder="Type" required>
+       </div>
+       <div *ngIf="!type?.valid && (type?.dirty || type?.touched)" class="error">
+        <div *ngIf="type.errors?.required">
+          Payment Type is required
+        </div>
+      </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+ 
+<div [hidden]="!submitted">
+  <h4>Success!</h4>
+</div>

@@ -1,0 +1,46 @@
+<p>cart-list works!</p>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Cart List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Imagename</th>
+          <th>Productname</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cart of cart | async">
+          <td>
+            <img height="100px" src="{{cart.imageName}}" alt="{{cart.imageName}}">
+        </td>
+          <td>{{cart.productName}}</td>
+          <td>{{cart.quantity}}</td>
+          <td>{{cart.price}}</td>
+          <td>{{cart.total}}</td>
+
+          <td>
+            <div class="btn-group">
+            <button (click)="deleteCart(cart.cartId)" class="btn btn-danger">Delete</button>
+            <button (click)="updateCart(cart.cartId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+            <button (click)="cartDetails(cart.cartId)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            <button (click)="order(cart.total)" class="btn btn-primary"  style="margin-left: 10px">Order</button>
+             </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <label>Total Amount</label>: {{total}}
+    </div>
+    <button  class="btn btn-outline-success" (click)="order(total)">Order</button>
+  </div>
+</div>
